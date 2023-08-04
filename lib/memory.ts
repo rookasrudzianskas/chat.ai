@@ -32,6 +32,9 @@ export class MemoryManager {
     recentChatHistory: string,
     companionFileName: string
   ) {
+    // JS version
+    // const pineconeClient = <PineconeClient>this.vectorDBClient;
+    // TS version
     const pineconeClient = this.vectorDBClient as PineconeClient;
 
     const pineconeIndex = pineconeClient.Index(
