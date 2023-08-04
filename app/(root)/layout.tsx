@@ -1,28 +1,37 @@
-// import { checkSubscription } from "@/lib/subscription";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { ClerkProvider } from '@clerk/nextjs'
 
-import Navbar from "@/components/navbar";
-import Sidebar from "@/components/sidebar";
-import {Toaster} from "@/components/ui/toaster";
+import { cn } from '@/lib/utils';
+import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/toaster';
+import { ProModal } from '@/components/pro-modal';
 
-const RootLayout = async ({
-  children
-}: {
-  children: React.ReactNode;
-}) => {
-  // const isPro = await checkSubscription();
+import './globals.css'
 
-  return (
-    <div className="h-full">
-      <Navbar />
-      <div className="hidden md:flex mt-16 h-full w-20 flex-col fixed inset-y-0">
-        <Sidebar />
-      </div>
-      <main className="md:pl-20 pt-16 h-full">
-        {children}
-        <Toaster />
-      </main>
-    </div>
-  );
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Companion.AI',
+  description: 'Your customized companion.',
 }
 
-export default RootLayout;
+export default function RootLayout({
+                                     children,
+                                   }: {
+  children: React.ReactNode
+}) {
+  return (
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+      <body className={cn("bg-secondary", inter.className)}>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ProModal />
+        {children}
+        <Toaster />
+      </ThemeProvider>
+      </body>
+      </html>
+    </ClerkProvider>
+  )
+}
