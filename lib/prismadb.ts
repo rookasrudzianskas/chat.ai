@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 
+// Does not exists in global scope
 declare global {
   var prisma: PrismaClient | undefined
 }
