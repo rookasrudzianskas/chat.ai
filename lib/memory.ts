@@ -32,7 +32,7 @@ export class MemoryManager {
     recentChatHistory: string,
     companionFileName: string
   ) {
-    const pineconeClient = <PineconeClient>this.vectorDBClient;
+    const pineconeClient = this.vectorDBClient as PineconeClient;
 
     const pineconeIndex = pineconeClient.Index(
       process.env.PINECONE_INDEX! || ""
@@ -41,7 +41,7 @@ export class MemoryManager {
     const vectorStore = await PineconeStore.fromExistingIndex(
       new OpenAIEmbeddings({ openAIApiKey: process.env.OPENAI_API_KEY }),
       { pineconeIndex }
-    ); 
+    );
 
     const similarDocs = await vectorStore
       .similaritySearch(recentChatHistory, 3, { fileName: companionFileName })
