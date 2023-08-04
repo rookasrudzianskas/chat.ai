@@ -191,6 +191,23 @@ const CompanionForm = ({
               </FormItem>
             )}
           />
+          <FormField
+            name="seed"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Example Conversation</FormLabel>
+                <FormControl>
+                  <Textarea disabled={isLoading} rows={7} className="bg-background resize-none" placeholder={SEED_CHAT} {...field} />
+                </FormControl>
+                <FormDescription>
+                  Write couple of examples of a human chatting with your AI companion, write expected answers.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
         </form>
       </Form>
     </div>
