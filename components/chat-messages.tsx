@@ -30,6 +30,7 @@ export const ChatMessages = ({
     }
   }, []);
 
+  // We scroll to down when the messages change
   useEffect(() => {
     scrollRef?.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages.length]);
