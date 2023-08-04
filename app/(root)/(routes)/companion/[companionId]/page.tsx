@@ -2,7 +2,7 @@ import React from 'react';
 import {auth, redirectToSignIn} from "@clerk/nextjs";
 
 import prismadb from "@/lib/prismadb";
-import CompanionForm from "@/app/(root)/(routes)/companion/[companionId]/components/companion-form";
+import { CompanionForm } from "./components/companion-form";
 
 interface CompanionIdPageProps {
   params: {
