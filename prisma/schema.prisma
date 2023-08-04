@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -9,8 +10,9 @@ datasource db {
 }
 
 model Category {
-  id   String @id @default(uuid())
-  name String
+  id         String      @id @default(uuid())
+  name       String
+  companions Companion[]
 }
 
 model Companion {
