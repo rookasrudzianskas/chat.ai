@@ -33,6 +33,7 @@ const Categories = ({
   return (
     <div className="w-full overflow-x-auto space-x-2 flex p-1">
       <button
+        onClick={() => onClick(undefined)}
         className={cn(`
           flex 
           items-center 
